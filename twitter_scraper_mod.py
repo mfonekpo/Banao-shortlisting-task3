@@ -63,7 +63,7 @@ def login_to_twitter():
     except Exception as e:
         print(f"Login failed: {e}")
 
-
+# Extracts the bio, following count, followers count, location, and website
 def extract_bio():
     try:
         bio_tag = WebDriverWait(driver, 10).until(
@@ -132,7 +132,7 @@ def save_to_db(bio, following_count, followers_count, location, website):
                 """, (bio, following_count, followers_count, location, website))
                 conn.commit()
 
-def fetch_data():
+def fetch_data(): #This returns the data to the terminal
     with psycopg.connect(
         dbname="twitter",
         user="postgres",
